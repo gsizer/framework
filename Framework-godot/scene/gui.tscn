@@ -1,0 +1,192 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm3o32b4snwgq"]
+
+[ext_resource type="Script" path="res://script/gui.gd" id="1_bpays"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bpays")
+
+[node name="MenuMain" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(400, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -112.5
+offset_right = 200.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuMain"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="btnGame" type="Button" parent="MenuMain/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Game"
+
+[node name="btnConfig" type="Button" parent="MenuMain/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="btnExit" type="Button" parent="MenuMain/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Good-Bye"
+
+[node name="MenuGame" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -112.5
+offset_right = 200.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbGameListing" type="VBoxContainer" parent="MenuGame"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="listSaveGames" type="ItemList" parent="MenuGame/vbGameListing"]
+layout_mode = 2
+
+[node name="MenuConfig" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuConfig"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="hbVolumeMain" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuConfig/VBoxContainer/hbVolumeMain"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Main"
+
+[node name="hsVolMain" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeMain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="hbVolumeAmbient" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuConfig/VBoxContainer/hbVolumeAmbient"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Ambient"
+
+[node name="hsVolAmbient" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeAmbient"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="hbVolumeEffects" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuConfig/VBoxContainer/hbVolumeEffects"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Effects"
+
+[node name="hsVolEffects" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="hbVolumeMusic" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuConfig/VBoxContainer/hbVolumeMusic"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="hsVolMusic" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="hbVolumeVoice" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuConfig/VBoxContainer/hbVolumeVoice"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Voice"
+
+[node name="hsVolVoice" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeVoice"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="hbVolumeWeather" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="MenuConfig/VBoxContainer/hbVolumeWeather"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Weather"
+
+[node name="hsVolWeather" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeWeather"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btnCfgClose" type="Button" parent="MenuConfig/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MenuMain/VBoxContainer/btnGame" to="." method="_on_btn_game_pressed"]
+[connection signal="pressed" from="MenuMain/VBoxContainer/btnConfig" to="." method="_on_btn_config_pressed"]
+[connection signal="pressed" from="MenuMain/VBoxContainer/btnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="visibility_changed" from="MenuGame" to="." method="_on_menu_game_visibility_changed"]
+[connection signal="visibility_changed" from="MenuConfig" to="." method="_on_menu_config_visibility_changed"]
+[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeMain/hsVolMain" to="." method="_on_hs_vol_main_value_changed"]
+[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeAmbient/hsVolAmbient" to="." method="_on_hs_vol_ambient_value_changed"]
+[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeEffects/hsVolEffects" to="." method="_on_hs_vol_effects_value_changed"]
+[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeMusic/hsVolMusic" to="." method="_on_hs_vol_music_value_changed"]
+[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeVoice/hsVolVoice" to="." method="_on_hs_vol_voice_value_changed"]
+[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeWeather/hsVolWeather" to="." method="_on_hs_vol_weather_value_changed"]
+[connection signal="pressed" from="MenuConfig/VBoxContainer/btnCfgClose" to="." method="_on_btn_cfg_close_pressed"]
