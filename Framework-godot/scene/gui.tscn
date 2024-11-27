@@ -69,6 +69,31 @@ alignment = 1
 
 [node name="listSaveGames" type="ItemList" parent="MenuGame/vbGameListing"]
 layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+auto_height = true
+item_count = 1
+item_0/text = "New Game"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuGame/vbGameListing"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="btnGameBack" type="Button" parent="MenuGame/vbGameListing/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="btnGameLoad" type="Button" parent="MenuGame/vbGameListing/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Continue"
+
+[node name="btnGameErase" type="Button" parent="MenuGame/vbGameListing/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Erase"
 
 [node name="MenuConfig" type="CenterContainer" parent="."]
 visible = false
@@ -182,6 +207,10 @@ text = "Back"
 [connection signal="pressed" from="MenuMain/VBoxContainer/btnConfig" to="." method="_on_btn_config_pressed"]
 [connection signal="pressed" from="MenuMain/VBoxContainer/btnExit" to="." method="_on_btn_exit_pressed"]
 [connection signal="visibility_changed" from="MenuGame" to="." method="_on_menu_game_visibility_changed"]
+[connection signal="item_selected" from="MenuGame/vbGameListing/listSaveGames" to="." method="_on_list_save_games_item_selected"]
+[connection signal="pressed" from="MenuGame/vbGameListing/HBoxContainer/btnGameBack" to="." method="_on_btn_game_back_pressed"]
+[connection signal="pressed" from="MenuGame/vbGameListing/HBoxContainer/btnGameLoad" to="." method="_on_btn_game_load_pressed"]
+[connection signal="pressed" from="MenuGame/vbGameListing/HBoxContainer/btnGameErase" to="." method="_on_btn_game_erase_pressed"]
 [connection signal="visibility_changed" from="MenuConfig" to="." method="_on_menu_config_visibility_changed"]
 [connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeMain/hsVolMain" to="." method="_on_hs_vol_main_value_changed"]
 [connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeAmbient/hsVolAmbient" to="." method="_on_hs_vol_ambient_value_changed"]

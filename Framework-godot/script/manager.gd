@@ -1,10 +1,11 @@
 extends Node
 
 const sysData : String = "res://data"
+const cfgDefPref : String = "res://data/prefs.cfg"
 const usrData : String = "user://data"
-const cfgDefaults : String = "res://data/defaults.cfg"
 const cfgUserPref : String = "user://data/prefs.cfg"
-const SaveExt : String = "json"
+const newGameFile : String = "res://scene/default.tscn"
+var SaveFile : String = "res://data/default.tscn"
 
 var CfgData := ConfigFile.new()
 
@@ -12,21 +13,28 @@ var CfgData := ConfigFile.new()
 func _ready():
 	# test for resource data directory and create if not found
 	var dir := DirAccess.open("res://")
-	if not dir.dir_exists(sysData) : dir.make_dir(sysData)
-	# reset configuration
+	if not dir.dir_exists(sysData) :
+		dir.make_dir(sysData)
+	# load or reset configuration
 	CfgData.clear()
-	# load or set defaults
-	if not CfgData.load(cfgDefaults) : set_config_defaults()
+	if not CfgData.load(cfgDefPref) :
+		set_config_defaults()
 	# test for user data directory and create if not found
-	if not dir.dir_exists(usrData) : dir.make_dir(usrData)
+	dir = DirAccess.open("user://")
+	if not dir.dir_exists(usrData) :
+		dir.make_dir(usrData)
 	# load user preferences overwriting and appending to defaults
-	CfgData.load(cfgUserPref)
+	if not CfgData.load(cfgUserPref) :
+		set_config_defaults()
 
 func set_config_defaults()->void:
+	print_debug("Writing default configuration.")
 	CfgData.set_value("Audio","Ambient",0.0)
 	CfgData.set_value("Audio","Effects",0.0)
 	CfgData.set_value("Audio","Main",0.0)
 	CfgData.set_value("Audio","Music",0.0)
 	CfgData.set_value("Audio","Weather",0.0)
 	CfgData.set_value("Audio","Voice",0.0)
-	print_debug(CfgData)
+
+func SaveConfig()->void:
+	CfgData.save(cfgUserPref)
