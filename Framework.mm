@@ -1,6 +1,6 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Framework" FOLDED="false" ID="ID_928167138" CREATED="1732719855325" MODIFIED="1732721106410" STYLE="oval"><hook NAME="MapStyle">
+<node TEXT="Framework" FOLDED="false" ID="ID_928167138" CREATED="1732719855325" MODIFIED="1732722239644" STYLE="oval"><hook NAME="MapStyle">
     <conditional_styles>
         <conditional_style ACTIVE="true" LOCALIZED_STYLE_REF="styles.connection" LAST="false">
             <node_periodic_level_condition PERIOD="2" REMAINDER="1"/>
@@ -15,7 +15,7 @@
             <node_level_condition VALUE="6" COMPARATION_RESULT="0" SUCCEED="true"/>
         </conditional_style>
     </conditional_styles>
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/conceptMap.mm" fit_to_viewport="false" show_tags="UNDER_NODES"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/conceptMap.mm" fit_to_viewport="false" show_tags="UNDER_NODES" showTagCategories="false" show_icon_for_attributes="true" show_note_icons="true" show_notes_in_map="true"/>
     <tags category_separator="::"/>
 
 <map_styles>
@@ -76,6 +76,26 @@
 </stylenode>
 </map_styles>
 </hook>
+<hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
+<node POSITION="top_or_left" ID="ID_884722703" CREATED="1732721783967" MODIFIED="1732722334222" LINK="http://purl.org/dc/terms/"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <div class="tabs-content is-boxed">
+      <div class="tabs-panel is-active">
+        <p xmlns="#DEFAULT" dct="http://purl.org/dc/terms/" cc="http://creativecommons.org/ns#" class="license-text plaintext">
+          &#xa0;Framework © 2024 by Gregory Sizer is licensed under Creative Commons Attribution-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="https://creativecommons.org/licenses/by-sa/4.0/legalcode.en" POSITION="top_or_left" ID="ID_1573878593" CREATED="1732722147185" MODIFIED="1732722301484" LINK="https://creativecommons.org/licenses/by-sa/4.0/legalcode.en" FORMAT_AS_HYPERLINK="true"/>
 <node TEXT="Game Data" POSITION="bottom_or_right" ID="ID_850938071" CREATED="1732719913534" MODIFIED="1732719922578">
 <node TEXT="World" ID="ID_1010953531" CREATED="1732720103070" MODIFIED="1732720127678">
 <node TEXT="Area / Zone" ID="ID_11478511" CREATED="1732720236472" MODIFIED="1732720281125">
