@@ -1,6 +1,6 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Framework" FOLDED="false" ID="ID_928167138" CREATED="1732719855325" MODIFIED="1732722239644" STYLE="oval"><hook NAME="MapStyle" zoom="1.21">
+<node TEXT="Framework" FOLDED="false" ID="ID_928167138" CREATED="1732719855325" MODIFIED="1732722239644" STYLE="oval"><hook NAME="MapStyle" zoom="1.1">
     <conditional_styles>
         <conditional_style ACTIVE="true" LOCALIZED_STYLE_REF="styles.connection" LAST="false">
             <node_periodic_level_condition PERIOD="2" REMAINDER="1"/>
@@ -15,7 +15,7 @@
             <node_level_condition VALUE="6" COMPARATION_RESULT="0" SUCCEED="true"/>
         </conditional_style>
     </conditional_styles>
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" associatedTemplateLocation="template:/conceptMap.mm" fit_to_viewport="false" show_tags="UNDER_NODES" showTagCategories="false" show_icon_for_attributes="true" show_note_icons="true" show_notes_in_map="true"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_icon_for_attributes="true" show_notes_in_map="true" show_tags="UNDER_NODES" associatedTemplateLocation="template:/conceptMap.mm" show_note_icons="true" fit_to_viewport="false" showTagCategories="false"/>
     <tags category_separator="::"/>
 
 <map_styles>

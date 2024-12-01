@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/gui.gd" id="1_bpays"]
 
-[node name="GUI" type="Control"]
+[node name="GUI" type="Control" node_paths=PackedStringArray("MainMenu", "GameMenu", "ConfigMenu", "SaveFileList", "hsMain", "hsAmbient", "hsEffects", "hsMusic", "hsVoice", "hsWeather")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bpays")
+MainMenu = NodePath("MenuMain")
+GameMenu = NodePath("MenuGame")
+ConfigMenu = NodePath("MenuConfig")
+SaveFileList = NodePath("MenuGame/vbGameListing/listSaveGames")
+hsMain = NodePath("MenuConfig/VBoxContainer/hbVolumeMain/hsVolMain")
+hsAmbient = NodePath("MenuConfig/VBoxContainer/hbVolumeAmbient/hsVolAmbient")
+hsEffects = NodePath("MenuConfig/VBoxContainer/hbVolumeEffects/hsVolEffects")
+hsMusic = NodePath("MenuConfig/VBoxContainer/hbVolumeMusic/hsVolMusic")
+hsVoice = NodePath("MenuConfig/VBoxContainer/hbVolumeVoice/hsVolVoice")
+hsWeather = NodePath("MenuConfig/VBoxContainer/hbVolumeWeather/hsVolWeather")
 
 [node name="MenuMain" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(400, 225)
@@ -47,7 +57,6 @@ size_flags_vertical = 3
 text = "Good-Bye"
 
 [node name="MenuGame" type="CenterContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(400, 225)
 layout_mode = 1
 anchors_preset = 8
@@ -96,7 +105,6 @@ size_flags_horizontal = 3
 text = "Erase"
 
 [node name="MenuConfig" type="CenterContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(400, 225)
 layout_mode = 1
 anchors_preset = 8
@@ -128,6 +136,8 @@ text = "Main"
 [node name="hsVolMain" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeMain"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -80.0
+max_value = 20.0
 
 [node name="hbVolumeAmbient" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
@@ -142,6 +152,8 @@ text = "Ambient"
 [node name="hsVolAmbient" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeAmbient"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -80.0
+max_value = 20.0
 
 [node name="hbVolumeEffects" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
@@ -156,6 +168,8 @@ text = "Effects"
 [node name="hsVolEffects" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeEffects"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -80.0
+max_value = 20.0
 
 [node name="hbVolumeMusic" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
@@ -170,6 +184,8 @@ text = "Music"
 [node name="hsVolMusic" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeMusic"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -80.0
+max_value = 20.0
 
 [node name="hbVolumeVoice" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
@@ -184,6 +200,8 @@ text = "Voice"
 [node name="hsVolVoice" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeVoice"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -80.0
+max_value = 20.0
 
 [node name="hbVolumeWeather" type="HBoxContainer" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
@@ -198,6 +216,8 @@ text = "Weather"
 [node name="hsVolWeather" type="HSlider" parent="MenuConfig/VBoxContainer/hbVolumeWeather"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = -80.0
+max_value = 20.0
 
 [node name="btnCfgClose" type="Button" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
@@ -211,11 +231,10 @@ text = "Back"
 [connection signal="pressed" from="MenuGame/vbGameListing/HBoxContainer/btnGameBack" to="." method="_on_btn_game_back_pressed"]
 [connection signal="pressed" from="MenuGame/vbGameListing/HBoxContainer/btnGameLoad" to="." method="_on_btn_game_load_pressed"]
 [connection signal="pressed" from="MenuGame/vbGameListing/HBoxContainer/btnGameErase" to="." method="_on_btn_game_erase_pressed"]
-[connection signal="visibility_changed" from="MenuConfig" to="." method="_on_menu_config_visibility_changed"]
-[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeMain/hsVolMain" to="." method="_on_hs_vol_main_value_changed"]
-[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeAmbient/hsVolAmbient" to="." method="_on_hs_vol_ambient_value_changed"]
-[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeEffects/hsVolEffects" to="." method="_on_hs_vol_effects_value_changed"]
-[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeMusic/hsVolMusic" to="." method="_on_hs_vol_music_value_changed"]
-[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeVoice/hsVolVoice" to="." method="_on_hs_vol_voice_value_changed"]
-[connection signal="value_changed" from="MenuConfig/VBoxContainer/hbVolumeWeather/hsVolWeather" to="." method="_on_hs_vol_weather_value_changed"]
+[connection signal="drag_ended" from="MenuConfig/VBoxContainer/hbVolumeMain/hsVolMain" to="." method="_on_hs_vol_main_drag_ended"]
+[connection signal="drag_ended" from="MenuConfig/VBoxContainer/hbVolumeAmbient/hsVolAmbient" to="." method="_on_hs_vol_ambient_drag_ended"]
+[connection signal="drag_ended" from="MenuConfig/VBoxContainer/hbVolumeEffects/hsVolEffects" to="." method="_on_hs_vol_effects_drag_ended"]
+[connection signal="drag_ended" from="MenuConfig/VBoxContainer/hbVolumeMusic/hsVolMusic" to="." method="_on_hs_vol_music_drag_ended"]
+[connection signal="drag_ended" from="MenuConfig/VBoxContainer/hbVolumeVoice/hsVolVoice" to="." method="_on_hs_vol_voice_drag_ended"]
+[connection signal="drag_ended" from="MenuConfig/VBoxContainer/hbVolumeWeather/hsVolWeather" to="." method="_on_hs_vol_weather_drag_ended"]
 [connection signal="pressed" from="MenuConfig/VBoxContainer/btnCfgClose" to="." method="_on_btn_cfg_close_pressed"]
