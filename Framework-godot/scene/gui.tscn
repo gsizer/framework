@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/gui.gd" id="1_bpays"]
 
-[node name="GUI" type="Control" node_paths=PackedStringArray("MainMenu", "GameMenu", "ConfigMenu", "SaveFileList", "hsMain", "hsAmbient", "hsEffects", "hsMusic", "hsVoice", "hsWeather")]
+[node name="GUI" type="Control" node_paths=PackedStringArray("MainMenu", "GameMenu", "ConfigMenu", "SaveFileList", "hsMain", "hsAmbient", "hsEffects", "hsMusic", "hsVoice", "hsWeather", "LoadingScreen", "pbLoading")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,8 @@ hsEffects = NodePath("MenuConfig/VBoxContainer/hbVolumeEffects/hsVolEffects")
 hsMusic = NodePath("MenuConfig/VBoxContainer/hbVolumeMusic/hsVolMusic")
 hsVoice = NodePath("MenuConfig/VBoxContainer/hbVolumeVoice/hsVolVoice")
 hsWeather = NodePath("MenuConfig/VBoxContainer/hbVolumeWeather/hsVolWeather")
+LoadingScreen = NodePath("MenuProgress")
+pbLoading = NodePath("MenuProgress/pbLoading")
 
 [node name="MenuMain" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(400, 225)
@@ -222,6 +224,26 @@ max_value = 20.0
 [node name="btnCfgClose" type="Button" parent="MenuConfig/VBoxContainer"]
 layout_mode = 2
 text = "Back"
+
+[node name="MenuProgress" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(400, 225)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pbLoading" type="ProgressBar" parent="MenuProgress"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+rounded = true
 
 [connection signal="pressed" from="MenuMain/VBoxContainer/btnGame" to="." method="_on_btn_game_pressed"]
 [connection signal="pressed" from="MenuMain/VBoxContainer/btnConfig" to="." method="_on_btn_config_pressed"]

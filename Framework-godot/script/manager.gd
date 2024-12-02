@@ -1,13 +1,16 @@
 extends Node
 
+enum Dice { D4=4, D6=6, D8=8, D10=10, D12=12, D20=20, D100=100 }
+
 const sysData : String = "res://data"
 const cfgDefPref : String = "res://data/prefs.cfg"
 const usrData : String = "user://data"
 const cfgUserPref : String = "user://data/prefs.cfg"
-const newGameFile : String = "res://scene/default.tscn"
-var SaveFile : String = "res://data/default.tscn"
+const newGameFile : String = "res://data/new_game.tscn"
 
+var SaveFile : String = "res://data/default.tscn"
 var CfgData := ConfigFile.new()
+var _loaded_scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,3 +50,23 @@ func SaveConfig()->void:
 		for key in CfgData.get_section_keys(section):
 			print_debug( section, ":", key, ":", CfgData.get_value(section, key) )
 	CfgData.save(cfgUserPref)
+
+func Report(from:Object, message:String)->void:
+	print(from.to_string())
+	print(message)
+
+func Roll( count:int, die:Dice )->Array[int]:
+	var total : int = 0
+	var results : Array[int] = []
+	results.clear()
+	for d in count:
+		results.append( randi_range(1, die) )
+		total += results[d]
+	results.append(total)
+	return results
+
+func LoadProgress()->void:
+	ResourceLoader.load_threaded_request(Manager.SaveFile)
+	_loaded_scene = ResourceLoader.load_threaded_get(Manager.SaveFile)
+	var new_game = _loaded_scene.instantiate()
+	add_child(new_game)

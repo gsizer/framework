@@ -13,11 +13,15 @@ const Channels : Array[String] = ["Main", "Ambient", "Effects", "Music", "Weathe
 @export var hsMusic : HSlider
 @export var hsVoice : HSlider
 @export var hsWeather : HSlider
+@export var LoadingScreen : CenterContainer
+@export var pbLoading : ProgressBar
 
 func adjust_volume(channel:int, volume:float)->void:
 	AudioServer.set_bus_volume_db(channel, volume)
 	Manager.CfgData.set_value("Audio", Channels[channel], volume)
-	print_debug("Config write: Audio:", Channels[channel], ":", volume)
+	var _message : String = "Config set: Audio:{c}:{v}".format(
+		{"c":Channels[channel], "v":volume})
+	Manager.Report(self, _message)
 
 func toggle_menu(menu:CenterContainer)->void:
 	if menu.visible:
@@ -67,14 +71,17 @@ func _on_btn_game_back_pressed():
 	toggle_menu(MainMenu)
 
 func _on_btn_game_load_pressed():
-	# TODO load selected save file
-	pass # Replace with function body.
+	Manager.Report(self, "Load Save:"+Manager.SaveFile)
+	GameMenu.hide()
+	LoadingScreen.show()
+	Manager.LoadProgress()
+	LoadingScreen.hide()
 
 func _on_btn_game_erase_pressed():
 	if Manager.SaveFile == Manager.newGameFile:
-		print_debug("Delete Fail:", Manager.SaveFile)
+		Manager.Report(self, "Delete Fail:"+Manager.SaveFile)
 	else:
-		print_debug("Delete Save:", Manager.SaveFile)
+		Manager.Report(self, "Delete Save:"+Manager.SaveFile)
 		# open user save folder
 		var d : DirAccess = DirAccess.open(Manager.usrData)
 		# test for save file and delete
@@ -129,3 +136,5 @@ func _ready():
 	hsWeather.value = Manager.CfgData.get_value("Audio", "Voice", -50.0)
 	GameMenu.hide()
 	ConfigMenu.hide()
+	pbLoading.value = 0
+	LoadingScreen.hide()
