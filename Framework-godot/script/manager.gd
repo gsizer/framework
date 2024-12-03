@@ -55,7 +55,7 @@ func Report(from:Object, message:String)->void:
 	print(from.to_string())
 	print(message)
 
-func Roll( count:int, die:Dice )->Array[int]:
+func DiceRoll( count:int, die:Dice )->Array[int]:
 	var total : int = 0
 	var results : Array[int] = []
 	results.clear()

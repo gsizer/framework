@@ -22,6 +22,7 @@ buses/default_bus_layout="res://sys/audiobus_6.tres"
 [autoload]
 
 Manager="*res://scene/manager.tscn"
+PlayerData="*res://scene/player_data.tscn"
 
 [rendering]
 

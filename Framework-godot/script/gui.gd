@@ -1,6 +1,6 @@
 extends Control
 
-enum { Main=0, Ambient=1, Effects=2, Music=3, Weather=4, Voice=5 }
+enum { volMain=0, volAmbient=1, volEffects=2, volMusic=3, volWeather=4, volVoice=5 }
 const Channels : Array[String] = ["Main", "Ambient", "Effects", "Music", "Weather", "Voice"]
 
 @export var MainMenu : CenterContainer
@@ -104,22 +104,22 @@ func _on_menu_config_visibility_changed():
 		hsWeather.value = Manager.CfgData.get_value("Audio", "Voice", -40.0)
 
 func _on_hs_vol_main_drag_ended(value_changed):
-	if value_changed : adjust_volume(Main, hsMain.value)
+	if value_changed : adjust_volume(volMain, hsMain.value)
 
 func _on_hs_vol_ambient_drag_ended(value_changed):
-	if value_changed : adjust_volume(Ambient, hsAmbient.value)
+	if value_changed : adjust_volume(volAmbient, hsAmbient.value)
 
 func _on_hs_vol_effects_drag_ended(value_changed):
-	if value_changed : adjust_volume(Effects, hsEffects.value)
+	if value_changed : adjust_volume(volEffects, hsEffects.value)
 
 func _on_hs_vol_music_drag_ended(value_changed):
-	if value_changed : adjust_volume(Music, hsMusic.value)
+	if value_changed : adjust_volume(volMusic, hsMusic.value)
 
 func _on_hs_vol_voice_drag_ended(value_changed):
-	if value_changed : adjust_volume(Voice, hsVoice.value)
+	if value_changed : adjust_volume(volVoice, hsVoice.value)
 
 func _on_hs_vol_weather_drag_ended(value_changed):
-	if value_changed : adjust_volume(Weather, hsWeather.value)
+	if value_changed : adjust_volume(volWeather, hsWeather.value)
 
 func _on_btn_cfg_close_pressed():
 	Manager.SaveConfig()
