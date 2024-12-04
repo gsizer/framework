@@ -1,7 +1,7 @@
 extends Node3D
 
 ###
-# arrays for description generation
+# arrays for description generation and Markdown in visible text
 ###
 static var Colors = ["Grey", "Green", "Blue", "Purple", "Red", "Orange", "Yellow", "Magenta"]
 enum { Grey=0xcccccc, Green=0x00cc00, Blue=0x0000cc, Purple=0xcc00cc, Red=0xcc0000, Orange=0xff9900, Yellow=0xcccc00, Magneta=0xff00ff }
@@ -48,7 +48,11 @@ var ItemBase : Dictionary = {
 ###
 var PlayerInventory : Dictionary = {}
 
+###
+# Destructively sets PlayerInventory to empty slots
+###
 func ClearInventory()->void:
+	PlayerInventory.clear()
 	PlayerInventory.get_or_add("Head", null)
 	PlayerInventory.get_or_add("Arms", null)
 	PlayerInventory.get_or_add("Torso", null)
@@ -58,6 +62,16 @@ func ClearInventory()->void:
 	PlayerInventory.get_or_add("Feet", null)
 	PlayerInventory.get_or_add("Back", null)
 	PlayerInventory.get_or_add("Pockets", null)
+
+###
+# equip the given item and return the replaced item
+###
+func Equip(newItem:Dictionary)->Dictionary:
+	var slot = newItem.get("InventorySlot")
+	var replacedItem = PlayerInventory.get(slot)
+	PlayerInventory.erase(slot)
+	PlayerInventory.get_or_add(slot, newItem)
+	return replacedItem
 
 func _ready() -> void:
 	ClearInventory()
