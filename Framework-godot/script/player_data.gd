@@ -66,7 +66,7 @@ func ClearInventory()->void:
 ###
 # equip the given item and return the replaced item
 ###
-func Equip(newItem:Dictionary)->Dictionary:
+func EquipItem(newItem:Dictionary)->Dictionary:
 	var slot = newItem.get("InventorySlot")
 	var replacedItem = PlayerInventory.get(slot)
 	PlayerInventory.erase(slot)

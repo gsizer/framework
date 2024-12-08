@@ -45,7 +45,7 @@ func _on_btn_exit_pressed():
 	get_tree().quit()
 
 ###
-# Game Menu
+# Save Menu
 ###
 func _on_menu_game_visibility_changed():
 	if MainMenu.visible:
